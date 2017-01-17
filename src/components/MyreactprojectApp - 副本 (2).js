@@ -58,29 +58,6 @@ var ImgFigure = React.createClass(
 				</figure>);
 }
 });
-var ControlUnit = React.createClass({
-	handleClick: function(e){
-		e.preventDefault();
-		e.stopPropagation();
-		if(this.props.position.isCenter){
-			this.props.inverse();
-		}else{
-			this.props.center();
-		}
-	},
-	render: function(){
-		var controlUnitClass = 'controlLink';
-		if(this.props.position.isCenter){
-			controlUnitClass += ' conIsCenter';
-			if(this.props.position.isInverse){
-				controlUnitClass += ' conIsInverse';
-			}
-		}
-		return (
-		<div className={controlUnitClass} onClick={this.handleClick}></div>
-		);
-	}
-});
 //产生两区间内的随机数
 function getRangeRandom(min, max){
 	return min + Math.floor(Math.random() * (max - min + 1));
@@ -197,8 +174,7 @@ var MyreactprojectApp = React.createClass({
 					top: getRangeRandom(hPosRangey[0], hPosRangey[1])
 				},
 				rotate: get30degRandom(),
-				isInverse: false,
-				isCenter: false
+				isInverse: false
 			};
 		}
 		/*JS Function splice
@@ -288,8 +264,9 @@ var MyreactprojectApp = React.createClass({
 				};
 			}
 			imgFigures.push(<ImgFigure data={value} ref={'imgFigure' + index} position={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
-			controllerUnits.push(<ControlUnit ref={'controlUnit' + index} position={this.state.imgsArrangeArr[index]} inverse={this.inverse(index)} center={this.center(index)}/>);
+			controllerUnits.push
 		}.bind(this));
+		
 		return (
 		<section className="stage" ref="stage">
 			<section className="img-sec">

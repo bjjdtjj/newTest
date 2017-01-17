@@ -1,3 +1,8 @@
+@font-face{
+	font-family:"icons-turn-arrow";
+	src:url("../fonts/icons/arrow.svg") format("svg");
+}
+
 /* Stiziles */
 
 html, body {
@@ -26,6 +31,36 @@ html, body {
 	height:100%;
 	overflow:hidden;
 	background-color:#ddd;
+	perspective:1800px;
+	@at-root{
+		.img-figure{
+			width:260px;
+			height:320px;
+			margin:0;
+			padding:30px;
+			box-sizing:border-box;
+			background-color:#fff;
+			position:absolute;
+			transform-origin:0 50% 0;
+			transform-style:preserve-3d;
+			transition:left 0.6s ease-in-out,top 0.6s ease-in-out,transform 0.6s ease-in-out;
+			cursor:pointer;
+			img{
+				width:200px;
+				height:200px;
+			}
+		}
+		.img-figure.is_inverse{transform:translate(260px) rotateY(180deg);}
+		figcaption{
+			text-align:center;
+			
+			.img-title{
+				margin:20px 0 0 0;
+				color:#a7a0a2;
+				font-size:16px;
+			}
+		}
+	}
 }
 /*image------end*/
 
@@ -38,8 +73,44 @@ html, body {
 	bottom:30px;
 	z-index:999;
 	width:100%;
-	background:pink;
 	text-align:center;
-	height:50px;
+	
 }
 /*controller------end*/
+
+
+/* image back */
+div.imgfront{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:100%;
+	padding:30px;
+	box-sizing:border-box;
+}
+div.imgBack{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:100%;
+	padding:30px;
+	box-sizing:border-box;
+	color:#666;
+	transform:translateZ(-1px) rotateY(180deg);
+	background:white
+}
+
+div.controlLink{vertical-align:middle;transition:all 0.6s ease-in-out;cursor:pointer;display:block;width:40px;height:40px;background:#aaa;border-radius:100%;display:inline-block;margin:0px 5px 0px;text-align:center;line-height:40px;transform:scale(0.5)}
+div.controlLink.conIsCenter{line-height:30px;background:#888;transform:scale(1);
+&::after{
+	font-family:"icons-turn-arrow";
+	content:"\e600";
+	color:white;
+	line-height:30px;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+}
+}
+div.controlLink.conIsCenter.conIsInverse{background:#555;transform:rotateY(180deg)}

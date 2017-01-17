@@ -11,12 +11,12 @@ var webpack = require('webpack');
 module.exports = {
 
   output: {
-    publicPath: '/assets/',
+    publicPath: 'assets/',
     path: 'dist/assets/',
     filename: 'main.js'
   },
 
-  debug: false,
+  debug: true,
   devtool: false,
   entry: './src/components/MyreactprojectApp.js',
 
@@ -59,7 +59,7 @@ module.exports = {
       test: /\.scss/,
       loader: 'style-loader!css-loader!autoprefixer-loader?{browsers:["last 2 version"]}!sass-loader?outputStyle=expanded'
     }, {
-      test: /\.(png|jpg|woff|woff2)$/,
+      test: /\.(png|jpg|woff|woff2|eot|ttf|svg)$/,
       loader: 'url-loader?limit=8192'
     }, {
       test: /\.json$/,
