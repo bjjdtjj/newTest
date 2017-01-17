@@ -134,11 +134,11 @@ var MyreactprojectApp = React.createClass({
 	//重新布局所有的图片
 	//@para centerIndex指定居中排布哪张图片
 	rearrange: function(centerIndex){
-		var imgsArrangeArr = this.state.imgsArrangeArr,
-		Constant = this.Constant,
+		var imgsArrangeArr = this.state.imgsArrangeArr;
+		var Constant = this.Constant,
 		//第一级
-		centerPos = Constant.centerPos,
-		hPosRange = Constant.hPosRange,
+		centerPos = Constant.centerPos;
+		var hPosRange = Constant.hPosRange,
 		vPosRange = Constant.vPosRange,
 		//第二级
 		hPosRangeleftSecX = hPosRange.leftSecX,
@@ -148,21 +148,21 @@ var MyreactprojectApp = React.createClass({
 		vPosRangex = vPosRange.x,
 		vPosRangetopY = vPosRange.topY;
 		//上方位置的图片信息
-		var imgsArrangeTopArr = [],
-		topImgNum = Math.floor(Math.random() * 2),
-		//topImgNum = 1,
-		topImgSpliceIndex = 0,
+		var imgsArrangeTopArr,
+		//topImgNum = Math.floor(Math.random() * 2);
+		topImgNum = 1;
+		var topImgSpliceIndex;
 		//获取需要居中的图片的位置状态
-		imgsArrangeCenterArr = imgsArrangeArr.splice(centerIndex, 1);
+		var imgsArrangeCenterArr = imgsArrangeArr.splice(centerIndex, 1);
 		imgsArrangeCenterArr = {
 			pos: centerPos,
 			isInverse: false,
-			isCenter: true
+			isCenter: true,
+			rotate: null
 		};
 		//获取需要布局到上侧的图片的状态信息
-		if(topImgNum > 0 ){
 		topImgSpliceIndex = Math.floor(Math.random() * (imgsArrangeArr.length - topImgNum));
-		while(topImgNum === centerIndex){
+		while(topImgSpliceIndex === centerIndex){
 			topImgSpliceIndex = Math.floor(Math.random() * (imgsArrangeArr.length - topImgNum));
 		}
 		imgsArrangeTopArr = imgsArrangeArr.splice(topImgSpliceIndex, topImgNum);
@@ -181,10 +181,11 @@ var MyreactprojectApp = React.createClass({
 			isInverse: false,
 			isCenter: false
 		};
-		}
 		//布局左右两侧的图片
-		for(var i = 0, j = imgsArrangeArr.length, k = j / 2; i < j; i++){
-			var PosLeftOrRight = null;
+		var k = Math.floor(imgsArrangeArr.length / 2);
+		var n = imgsArrangeArr.length;
+		for(var i = 0; i < n; i++){
+			var PosLeftOrRight = 0;
 			if(i < k){
 				PosLeftOrRight = hPosRangeleftSecX;
 			}
